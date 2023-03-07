@@ -5,19 +5,27 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
 public class LiveProject3 {
+
+    WebDriver driver;
+
+    @BeforeClass
+    void setUp() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+    }
+
     @Test
     void userLoginOrangeHRM() {
 
         /**TC_Ml_MIM_01 First time user login-information display check*/
-
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
         // Navigate to the login page
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 
@@ -68,4 +76,28 @@ public class LiveProject3 {
 //        System.out.println("Driver License No readonly attribute: " + driverLicense.getAttribute("readonly"));
 //        System.out.println("Date of Birth readonly attribute: " + dob.getAttribute("readonly"));
     }
+
+    // Test Case ID: TC_MI_02
+    // Assignee: Eray Sahin
+    // Test Case Description: Error message on unsuccessful Employee login
+    @Test
+    void errorOnUnsuccessfulEmpLogin() {
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        WebElement username = driver.findElement(By.xpath("//input[@name='username']"));
+        // Enter a "valid" username
+        username.sendKeys("Admin");
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        WebElement password = driver.findElement(By.xpath("//input[@type='password']"));
+        // Enter an "invalid" password
+        password.sendKeys("abc123");
+        // Click the login button
+        WebElement loginButton = driver.findElement(By.xpath("//button[@type='submit']"));
+        loginButton.click();
+        // Check if the error message is displayed
+        String errorMessageXpath = "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p";
+        WebElement errorMessage = driver.findElement(By.xpath(errorMessageXpath));
+        Assert.assertEquals(errorMessage.getText(), "Invalid credentials");
+    }
+
 }
