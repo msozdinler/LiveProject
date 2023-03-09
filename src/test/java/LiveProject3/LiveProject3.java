@@ -73,9 +73,11 @@ public class LiveProject3 {
 //        System.out.println("Date of Birth readonly attribute: " + dob.getAttribute("readonly"));
     }
 
-    /** Test Case ID: TC_MI_02
-    // Assignee: Eray Sahin
-    // Test Case Description: Error message on unsuccessful Employee login*/
+    /**
+     * Test Case ID: TC_MI_02
+     * // Assignee: Eray Sahin
+     * // Test Case Description: Error message on unsuccessful Employee login
+     */
     @Test
     void errorOnUnsuccessfulEmpLogin() {
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
@@ -96,6 +98,7 @@ public class LiveProject3 {
         Assert.assertEquals(errorMessage.getText(), "Invalid credentials");
 
     }
+
     /**
      * TC_Ml_P_01 Check the upload of a PNG format image
      * Karima
@@ -149,8 +152,10 @@ public class LiveProject3 {
     }
 
 
-    /**TC_MI_P_03 Check the upload of a invalid format of the picture that is less than 1 MB
-     * Asma */
+    /**
+     * TC_MI_P_03 Check the upload of a invalid format of the picture that is less than 1 MB
+     * Asma
+     */
     @Test
     // void loginTest() throws InterruptedException {
     //   WebDriver driver = new ChromeDriver();
@@ -197,4 +202,38 @@ public class LiveProject3 {
         submitButton.click();
     }
 
+    @Test
+    void FileUploadOverOneMB() throws InterruptedException {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPhotograph/empNumber/7");
+
+        WebElement username = driver.findElement(By.xpath("//input[@name='username']"));
+        username.sendKeys("Admin");
+
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        // Enter the password
+        WebElement password = driver.findElement(By.xpath("//input[@type='password']"));
+        password.sendKeys("admin123");
+        // Click the login button
+        WebElement loginButton = driver.findElement(By.xpath("//button[@type='submit']"));
+        loginButton.click();
+
+        String filePath = ("src/test/java/LiveProject3/626324.jpg");
+        WebElement pictureUpload = driver.findElement(By.xpath("       //*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div/form/div[1]/div/div/div[2]/div/div/img"));
+        pictureUpload.sendKeys(filePath);
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div/form/div[1]/div/div/div[2]/div/div/img")).click();
+
+        WebElement errorMessage = driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div/div/div/div[2]/div/form/div[1]/div/p"));
+        String expectedErrorMessage = "Accepts jpg, .png, .gif up to 1MB. Recommended dimensions: 200px X 200px";
+        if (errorMessage.getText().equals(expectedErrorMessage)) {
+            System.out.println("Test passed: File upload failed with expected error message");
+        } else {
+            System.out.println("Test failed: File upload did not fail with expected error message");
+        }
+
+
+    }
 }
