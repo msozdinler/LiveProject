@@ -236,4 +236,28 @@ public class LiveProject3 {
 
 
     }
+
+
+    /**https://opensource-demo.orangehrmlive.com/web/index.php/auth/login*/
+    /**
+     * "1. In the login Panel, enter the username
+     * <p>
+     * 2. Enter the Password for the ESS-User account in the password field
+     * <p>
+     * 3. Click ""Login"" button"
+     */
+    @Test(priority = 2, groups = "smokeTest")
+    public void successfulLogin() {
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        WebElement nameBox = driver.findElement(By.xpath("//input[@name='username']"));
+        nameBox.sendKeys("Admin");
+        WebElement passwordBox = driver.findElement(By.xpath("//input[@type='password']"));
+        passwordBox.sendKeys("admin123");
+        WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
+        submitBtn.click();
+        WebElement userDropDown = driver.findElement(By.className("oxd-userdropdown-tab"));
+//        Expected Result: The user is logged in successfully.
+        Assert.assertTrue(userDropDown.isDisplayed(), "User was not able to login");
+    }
+
 }
