@@ -2,12 +2,18 @@ package LiveProject3;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import static Utility.UtilityClass.driver;
@@ -234,6 +240,37 @@ public class LiveProject3 {
             System.out.println("Test failed: File upload did not fail with expected error message");
         }
 
+
+    }
+    /**
+     * TC_MI_MIM_02 Personal details - modification with valid values - ("First Name")Selim Yagci */
+    @Test
+    public void MyInfoCheck() throws InterruptedException, AWTException {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+
+        WebDriver driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        Thread.sleep(3000);
+        WebElement userName = driver.findElement(By.xpath("//input[@name='username']"));
+        userName.sendKeys("Admin");
+        WebElement password = driver.findElement(By.cssSelector("input[type='password']"));
+        password.sendKeys("admin123");
+        WebElement logIn = driver.findElement(By.xpath("//button[@type='submit']"));
+        logIn.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='My Info']")));
+        WebElement myInfo = driver.findElement(By.xpath("//span[text()='My Info']"));
+        myInfo.click();
+        Thread.sleep(3000);
+        WebElement firstName = driver.findElement(By.xpath("//input[@placeholder='First Name']"));
+        firstName.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+        firstName.sendKeys( "QuaresmaQ7");
+        Thread.sleep(2000);
+        WebElement saveButton = driver.findElement(By.xpath("//button[@type='submit']"));
+        saveButton.click();
 
     }
 }
