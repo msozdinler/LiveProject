@@ -273,4 +273,45 @@ public class LiveProject3 {
         saveButton.click();
 
     }
+
+    /**https://opensource-demo.orangehrmlive.com/web/index.php/auth/login*/
+    /**
+     * "1. In the login Panel, enter the username
+     * <p>
+     * 2. Enter the Password for the ESS-User account in the password field
+     * <p>
+     * 3. Click ""Login"" button"
+     */ //==== sami akkan
+    @Test
+    void successfulLogged(){
+
+
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        // Navigate to the login page
+        driver.get("https://opensource-demo.orangehrmlive.com/");
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(3000));
+
+
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("username")));
+
+        WebElement username = driver.findElement(By.name("username"));
+        username.sendKeys("Admin");
+
+        WebElement password = driver.findElement(By.name("password"));
+        password.sendKeys("admin123");
+
+        WebElement loginButton = driver.findElement(By.xpath("//button[@type='submit']"));
+        loginButton.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Admin']")));
+        WebElement userDropdownName = driver.findElement(By.xpath("//span[text()='Admin']"));
+
+        Assert.assertTrue(userDropdownName.isDisplayed());
+        Assert.assertEquals(userDropdownName.getText(), "Admin");
+
+
+    }
 }
