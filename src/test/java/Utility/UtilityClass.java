@@ -1,18 +1,31 @@
 package Utility;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.time.Duration;
 
 public class UtilityClass {
-    public static WebDriver driver;
+  public static WebDriver driver;
 
-    static {
-        WebDriverManager.chromedriver().setup();
+        public static WebDriver getDriver(){
+            if (driver == null) {
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--remote-allow-origins=*"); // To solve the error with Chrome v111
 
-        driver = new ChromeDriver();
+                System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
+                driver = new ChromeDriver(options);
+                driver.manage().window().maximize();
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
-        driver.manage().window().maximize();
+            }
+
+            return driver;
+       // WebDriverManager.chromedriver().setup();
+      //  driver = new ChromeDriver();
+
     }
 
     public static void quitDriver(int time){
