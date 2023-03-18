@@ -13,6 +13,9 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.fail;
+
 public class LiveProject4 extends DriverClass {
     @Test
     public void login() {
@@ -76,7 +79,7 @@ public class LiveProject4 extends DriverClass {
     }
 
     /**
-     * Test Case 5 -
+     * Test Case 9 -
      * Mert Sozdinler
      */
 
@@ -103,7 +106,7 @@ public class LiveProject4 extends DriverClass {
         WebElement saveButton = driver.findElement(By.xpath("//button[@type='submit']"));
         saveButton.click();
         WebElement errorMessage = driver.findElement(By.xpath("//*[@class='orangehrm-card-container']"));
-     //   String result = errorMessage.getText();
+        //   String result = errorMessage.getText();
 
         Assert.assertTrue(errorMessage.isDisplayed(), "Invalid inputs");
 
@@ -143,7 +146,41 @@ public class LiveProject4 extends DriverClass {
     public void tearDown() {
         driver.quit();
     }
+        /**Test Case 10
+         * Mert Sozdinler*/
+    @Test
+    public void testAddUserHeadingDisplayed() {
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        WebElement userName = driver.findElement(By.xpath("//input[@name='username']"));
+        userName.sendKeys("Admin");
+
+        WebElement password = driver.findElement(By.xpath(" //input[@type='password']"));
+        password.sendKeys("admin123");
+
+        WebElement loginButton = driver.findElement(By.xpath(" //button[@type='submit']"));
+        loginButton.click();
+        WebElement adminButton = driver.findElement(By.xpath("//span[text()='Admin']"));
+        adminButton.click();
+
+
+        WebElement addButton = driver.findElement(By.xpath("//i[@class='oxd-icon bi-plus oxd-button-icon']"));
+        addButton.click();
+
+        WebElement addUserHeading = driver.findElement(By.xpath("//h1[text()='Add User']"));
+        Assert.assertTrue(addUserHeading.isDisplayed(), "Add User heading is not displayed");
+
+        if (addUserHeading.isDisplayed()) {
+            System.out.println("Add User heading is displayed.");
+            assertTrue(true);
+        } else {
+            System.out.println("Add User heading is not displayed.");
+            fail();
+        }
+
+
+    }
 }
+
 
 
 
