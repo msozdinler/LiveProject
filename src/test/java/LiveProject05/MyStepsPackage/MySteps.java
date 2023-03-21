@@ -1,10 +1,10 @@
-package MyStepsPackage;
+package LiveProject05.MyStepsPackage;
 
 import DriverPackage.BasicDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.DialogContent;
+import LiveProject05.pages.DialogContent;
 
 public class MySteps {
     DialogContent dialogContent = new DialogContent();

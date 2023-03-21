@@ -1,4 +1,4 @@
-package pages;
+package LiveProject05.pages;
 
 import DriverPackage.BasicDriver;
 import DriverPackage.Methods;
