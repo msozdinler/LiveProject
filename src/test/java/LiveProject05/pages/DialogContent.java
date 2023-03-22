@@ -112,7 +112,65 @@ public class DialogContent extends Methods {
     private WebElement PasswordNotMatch;
     @FindBy(css = "div[class='alert alert-danger alert-dismissible']")
     private WebElement usedEmailErrorMessage;
+    @FindBy(id = "input-firstname")
+    private WebElement inputName;
+    //<input type="text" name="firstname" value="" placeholder="First Name" id="input-firstname" class="form-control">
 
+    @FindBy(id = "input-lastname")
+    private WebElement inputLastName;
+    //<input type="text" name="lastname" value="" placeholder="Last Name" id="input-lastname" class="form-control">
+
+    @FindBy(id = "input-email")
+    private WebElement inputEmail;
+    //<input type="email" name="email" value="" placeholder="E-Mail" id="input-email" class="form-control">
+    @FindBy(id = "input-telephone")
+    private WebElement inputPhone;
+    //<input type="tel" name="telephone" value="" placeholder="Telephone" id="input-telephone" class="form-control">
+
+    @FindBy(id = "input-password")
+    private WebElement password;
+
+    //<input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control">
+    @FindBy(id = "input-confirm")
+    private WebElement confirm;
+    //<input type="password" name="confirm" value="" placeholder="Password Confirm" id="input-confirm" class="form-control">
+
+    @FindBy(css = "input[class='btn btn-primary']")
+    private WebElement confirmRegistration;
+    //<input type="submit" value="Continue" class="btn btn-primary">
+
+
+    public WebElement getMyAccountButton() {
+        return MyAccountButton;
+    }
+
+    public WebElement getInputName() {
+        return inputName;
+    }
+
+    public WebElement getInputLastName() {
+        return inputLastName;
+    }
+
+    public WebElement getInputEmail() {
+        return inputEmail;
+    }
+
+    public WebElement getInputPhone() {
+        return inputPhone;
+    }
+
+    public WebElement getPassword() {
+        return password;
+    }
+
+    public WebElement getConfirm() {
+        return confirm;
+    }
+
+    public WebElement getConfirmRegistration() {
+        return confirmRegistration;
+    }
 
     public WebElement getRegisterButton2() {
         return registerButton2;
