@@ -9,7 +9,7 @@ public class hooks {
 
         @Before // This method runs before every scenario
         public void beforeScenario() {
-            System.out.println("Scenario has started");
+            System.out.println("Scenario has started for Batch 7 group 2");
         }
 
         @After // This method runs after every scenario

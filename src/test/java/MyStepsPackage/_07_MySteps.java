@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.DialogContent;
 
-public class MySteps {
+public class _07_MySteps {
     DialogContent dialogContent = new DialogContent();
 
     @Given("Navigate to Opencart")
