@@ -7,7 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class MySteps_TC_06 {
+public class MySteps_TC_05 {
     DialogContent dialogContent = new DialogContent();
 
     @Given("Navigate to My Account page")
@@ -19,7 +19,7 @@ public class MySteps_TC_06 {
 
     @When("Select on Register button")
     public void selectOnRegisterButton() {
-       // dialogContent.clickMethod(dialogContent.getMyAccButton());
+        // dialogContent.clickMethod(dialogContent.getMyAccButton());
         dialogContent.clickMethod(dialogContent.getRegisterButton());
 
     }
@@ -39,9 +39,9 @@ public class MySteps_TC_06 {
         dialogContent.sendKeysMethod(dialogContent.getInputPhone(), "99645373231");
     }
 
-    @And("Click on the no button of NewsLetter")
-    public void clickOnTheNoButtonOfNewsLetter() {
-        dialogContent.getNewsLetterNoButton().click();
+    @And("Click on the yes button of NewsLetter")
+    public void clickOnTheYesButtonOfNewsLetter() {
+        dialogContent.getNewsLetterYesButton().click();
     }
 
     @And("Click on the Continue button")
@@ -51,15 +51,17 @@ public class MySteps_TC_06 {
 
     @And("Click on the Continue button that is displayed in the success page")
     public void clickOnTheContinueButtonThatIsDisplayedInTheSuccessPage() {
+        dialogContent.getContinue1Button().isDisplayed();
     }
 
     @And("click on the Newsletter")
     public void clickOnTheNewsletter() {
-        dialogContent.clickMethod(dialogContent.getNewsLetterNoButton());
+        dialogContent.clickMethod(dialogContent.getNewsLetterButton());
 
     }
 
     @Then("user should see no button on newsletter is displayed")
-    public void userShouldSeeNoButtonOnNewsletterIsDisplayed() {
+    public void userShouldSeeYesButtonOnNewsletterIsDisplayed() {
+    dialogContent.getNewsLetterYesButton().isDisplayed();
     }
 }
