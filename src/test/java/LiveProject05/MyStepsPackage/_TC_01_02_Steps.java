@@ -1,14 +1,18 @@
 package LiveProject05.MyStepsPackage;
 
 import DriverPackage.BasicDriver;
-import LiveProject05.pages.DialogContent;
+import LiveProject05.pages.SYAGCIPOM_01_02;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class _TC_01_02_Steps {
-    DialogContent dialogContent = new DialogContent();
+    SYAGCIPOM_01_02 elements = new SYAGCIPOM_01_02();
+    WebDriverWait wait = new WebDriverWait(BasicDriver.getDriver(), Duration.ofSeconds(10));
 
     {
     }
@@ -21,34 +25,34 @@ public class _TC_01_02_Steps {
 
     @When("Click on My Account button.")
     public void clickOnMyAccountButton() {
-        dialogContent.clickMethod(dialogContent.getMyAccButton());
+       elements.clickMethod(elements.getMyAccButton());
     }
 
     @And("Click on Register button.")
     public void clickOnRegisterButton() {
-        dialogContent.clickMethod(dialogContent.getRegisterButton());
+        elements.clickMethod(elements.getRegisterButton());
     }
 
     @And("Enter new Account information")
     public void enterNewAccountInformation() {
-        dialogContent.sendKeysMethod(dialogContent.getFirstname(), "Selim");
-        dialogContent.sendKeysMethod(dialogContent.getLastname(), "Yagci");
-        dialogContent.sendKeysMethod(dialogContent.getEmail(), "Selimyagci1512@gmail.com");
-        dialogContent.waitUntilVisible(dialogContent.getTelephone());
-        dialogContent.sendKeysMethod(dialogContent.getTelephone(), "056478965412");
-        dialogContent.sendKeysMethod(dialogContent.getPassword(), "group9");
-        dialogContent.sendKeysMethod(dialogContent.getPasswordConfirm(), "group9");
-        dialogContent.clickMethod(dialogContent.getAgree());
+        elements.sendKeysMethod(elements.getFirstNameInput(), "Selim");
+        elements.sendKeysMethod(elements.getLastNameInput(), "Yagci");
+        elements.sendKeysMethod(elements.getEmailInput(), "Selimyagci1512@gmail.com");
+        elements.waitUntilVisible(elements.getPhoneInput());
+        elements.sendKeysMethod(elements.getPhoneInput(), "056478965412");
+        elements.sendKeysMethod(elements.getPasswordButton(), "group9");
+        elements.sendKeysMethod(elements.getConfirmPasswordButton(), "group9");
+        elements.clickMethod(elements.getCheckBox());
     }
 
     @And("Click on Continue button")
     public void clickOnContinueButton() {
-        dialogContent.clickMethod(dialogContent.getContinueClick());
+        elements.clickMethod(elements.getContinueButton());
     }
 
     @Then("Success message should be displayed")
     public void successMessageShouldBeDisplayed() {
-        dialogContent.waitUntilVisible(dialogContent.getSuccessMessage());
+        elements.waitUntilVisible(elements.getSuccessMessage());
     }
 
 
