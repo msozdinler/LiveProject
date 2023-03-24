@@ -9,14 +9,14 @@ import org.openqa.selenium.support.PageFactory;
 
 public class DialogContent extends Methods {
 
-        public DialogContent() {
-            PageFactory.initElements(BasicDriver.getDriver(), this);
-        }
+    public DialogContent() {
+        PageFactory.initElements(BasicDriver.getDriver(), this);
+    }
 
     @FindBy(css = "a[class='dropdown-toggle']")
-        private WebElement myAccButton;
+    private WebElement myAccButton;
     @FindBy(xpath = "//*[@id='top-links']/ul/li[2]/ul/li[1]/a")
-        private WebElement registerButton;
+    private WebElement registerButton;
 
     @FindBy(css = "#column-right > div > a:nth-child(1)")
     private WebElement loginButton;
@@ -29,35 +29,6 @@ public class DialogContent extends Methods {
     @FindBy(xpath = "//*[@id='column-right']/div/a[2]")
     private WebElement registerButton2;
     //<a href="https://opencart.abstracta.us:443/index.php?route=account/register" class="list-group-item">Register</a>
-
-    @FindBy(id="input-firstname")
-    private WebElement firstname;
-
-    @FindBy(id="input-lastname")
-    private WebElement lastname ;
-
-
-    @FindBy(id="input-email")
-    private WebElement email ;
-
-    @FindBy(id="input-telephone")
-    private WebElement telephone ;
-
-
-    @FindBy(id="input-password")
-    private WebElement password  ;
-
-    @FindBy(id="input-confirm")
-    private WebElement passwordConfirm  ;
-
-    @FindBy(name="agree")
-    private WebElement agree  ;
-
-    @FindBy(css= "input[value='Continue']")
-    private WebElement continueClick;
-
-    @FindBy(xpath="//div[@id='content']//p")
-    private WebElement successMessage;
 
 
     public WebElement getRegisterButton2() {
@@ -108,11 +79,9 @@ public class DialogContent extends Methods {
         return myAccButton;
     }
 
-    public WebElement getContinueClick() {
-        return continueClick;
-    }
 
     public WebElement getSuccessMessage() {
         return successMessage;
     }
+
 }
