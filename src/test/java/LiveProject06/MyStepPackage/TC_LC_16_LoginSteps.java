@@ -1,14 +1,24 @@
 package LiveProject06.MyStepPackage;
 
+import DriverPackage.BasicDriver;
+import LiveProject06.Pages.DialogContent;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class TC_LC_16_LoginSteps {
+    DialogContent dc6 = new DialogContent();
+
+
     @Given("Click on 'My Account' Dropmenu")
     public void clickOnMyAccountDropmenu() {
+        BasicDriver.getDriver().manage().deleteAllCookies();
+        BasicDriver.getDriver().get("https://demo.opencart.com");
+        BasicDriver.getDriver().manage().window().maximize();
+
     }
+
 
     @When("Click on 'Login' option \\(Validate ER-1)")
     public void clickOnLoginOptionValidateER(int arg0) {

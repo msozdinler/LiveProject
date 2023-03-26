@@ -1,5 +1,9 @@
 Feature: Login Functionality
 
+  #Open the Application URL - https://demo.opencart.com
+  # EmailAddress - pavanoltraining@gmail.com
+  # Password - 12345
+
   Scenario:
     Given Click on 'My Account' Dropmenu
     When Click on 'Login' option (Validate ER-1)
