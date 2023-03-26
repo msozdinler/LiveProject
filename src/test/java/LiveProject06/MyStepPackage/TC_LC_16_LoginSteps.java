@@ -16,16 +16,25 @@ public class TC_LC_16_LoginSteps {
         BasicDriver.getDriver().manage().deleteAllCookies();
         BasicDriver.getDriver().get("https://demo.opencart.com");
         BasicDriver.getDriver().manage().window().maximize();
+        dc6.getMyAccButton().click();
 
     }
 
 
     @When("Click on 'Login' option \\(Validate ER-1)")
     public void clickOnLoginOptionValidateER(int arg0) {
+        dc6.getLoginButton().click();
     }
 
     @And("Enter valid email address into the 'E-Mail Address' field - <Refer Test Data>")
     public void enterValidEmailAddressIntoTheEMailAddressFieldReferTestData() {
+
+        /** #EmailAddress - pavanoltraining@gmail.com
+            #Password - 12345 */
+
+        dc6.getInputEmail().sendKeys("pavanoltraining@gmail.com");
+        dc6.getPassword().sendKeys("12345");
+        dc6.getLoginButton().click();
     }
 
     @And("Enter valid password into the 'Password' field - <Refer Test Data>")
@@ -56,7 +65,7 @@ public class TC_LC_16_LoginSteps {
     public void repeatStepsToER(int arg0, int arg1, int arg2) {
     }
 
-    @Then("Enter new credentials given in Step 7 and click on {string} button \\(ER-2)\"")
+    @Then("Enter new credentials given in Step 7 and click on 'Login' button \\(ER-2)\"")
     public void enterNewCredentialsGivenInStepAndClickOnLoginButtonER(int arg0, int arg1) throws Throwable {    // Write code here that turns the phrase above into concrete actions    throw new cucumber.api.PendingException();}
     }
 }
