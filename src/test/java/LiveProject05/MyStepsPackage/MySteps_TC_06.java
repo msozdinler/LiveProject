@@ -1,14 +1,14 @@
 package LiveProject05.MyStepsPackage;
 
 import DriverPackage.BasicDriver;
-import LiveProject05.pages.DialogContent;
+import LiveProject05.pages.DialogContent5;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class MySteps_TC_06 {
-    DialogContent dialogContent = new DialogContent();
+    DialogContent5 dialogContent = new DialogContent5();
 
     @Given("Navigate to My Account page")
     public void navigateToMyAccountPage() {

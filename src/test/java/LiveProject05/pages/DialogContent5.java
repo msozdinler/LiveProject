@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DialogContent extends Methods {
+public class DialogContent5 extends Methods {
 
-    public DialogContent() {
+    public DialogContent5() {
         PageFactory.initElements(BasicDriver.getDriver(), this);
     }
 

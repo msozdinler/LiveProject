@@ -4,10 +4,10 @@ import DriverPackage.BasicDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import LiveProject05.pages.DialogContent;
+import LiveProject05.pages.DialogContent5;
 
 public class MySteps_TC_07 {
-    DialogContent dialogContent = new DialogContent();
+    DialogContent5 dialogContent = new DialogContent5();
 
     @Given("Navigate to Opencart")
     public void navigate_to_opencart() {

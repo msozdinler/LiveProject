@@ -6,7 +6,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.testng.CucumberOptions;
 
+@CucumberOptions(
+        features = {"src/test/java/LiveProject06/Feature.Login"},
+        glue = {"MyStepPackage"}
+)
 public class TC_LC_16_LoginSteps {
     DialogContent dc6 = new DialogContent();
 
@@ -16,14 +21,16 @@ public class TC_LC_16_LoginSteps {
         BasicDriver.getDriver().manage().deleteAllCookies();
         BasicDriver.getDriver().get("https://demo.opencart.com");
         BasicDriver.getDriver().manage().window().maximize();
-        dc6.getMyAccButton().click();
+        dc6.clickMethod(dc6.getMyAccButton());
+        //dc6.getMyAccButton().click();
 
     }
 
 
     @When("Click on 'Login' option \\(Validate ER-1)")
     public void clickOnLoginOptionValidateER(int arg0) {
-        dc6.getLoginButton().click();
+        dc6.waitUntilClickable(dc6.getLoginButton());
+        dc6.clickMethod(dc6.getLoginButton());
     }
 
     @And("Enter valid email address into the 'E-Mail Address' field - <Refer Test Data>")
@@ -32,9 +39,11 @@ public class TC_LC_16_LoginSteps {
         /** #EmailAddress - pavanoltraining@gmail.com
             #Password - 12345 */
 
-        dc6.getInputEmail().sendKeys("pavanoltraining@gmail.com");
-        dc6.getPassword().sendKeys("12345");
-        dc6.getLoginButton().click();
+        dc6.sendKeysMethod(dc6.getInputEmail(),"pavanoltraining@gmail.com");
+        dc6.sendKeysMethod(dc6.getPassword(),"12345");
+//        dc6.getInputEmail().sendKeys("pavanoltraining@gmail.com");
+//        dc6.getPassword().sendKeys("12345");
+//        dc6.getLoginButton().click();
     }
 
     @And("Enter valid password into the 'Password' field - <Refer Test Data>")
