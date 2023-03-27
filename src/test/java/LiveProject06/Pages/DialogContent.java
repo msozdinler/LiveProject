@@ -20,6 +20,7 @@ public class DialogContent extends Methods {
     @FindBy(css = "#column-right > div > a:nth-child(1)")
     private WebElement loginButton;
     //<a href="https://opencart.abstracta.us:443/index.php?route=account/login">Login</a>
+
     @FindBy(css = "#content > div > div:nth-child(1) > div > a")
     private WebElement continueButton;
     //<a href="https://opencart.abstracta.us:443/index.php?route=account/register" class="btn btn-primary">Continue</a>
@@ -140,6 +141,12 @@ public class DialogContent extends Methods {
     private WebElement confirmRegistration;
     //<input type="submit" value="Continue" class="btn btn-primary">
 
+    public WebElement getConfirmLogin() {
+        return confirmLogin;
+    }
+
+    @FindBy(css = "button[class='btn btn-primary']")
+    private WebElement confirmLogin;
 
     public WebElement getMyAccountButton() {
         return MyAccountButton;
