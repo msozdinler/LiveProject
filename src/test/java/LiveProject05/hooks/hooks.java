@@ -5,7 +5,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 public class hooks {
-    public class Hooks {
+
 
         @Before // This method runs before every scenario
         public void beforeScenario() {
@@ -17,4 +17,4 @@ public class hooks {
             BasicDriver.quitDriver();
             System.out.println("Scenario has ended");
         }
-    }}
+    }

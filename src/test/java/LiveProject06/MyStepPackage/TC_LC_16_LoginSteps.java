@@ -2,6 +2,7 @@ package LiveProject06.MyStepPackage;
 
 import DriverPackage.BasicDriver;
 import LiveProject06.Pages.DialogContent;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,7 +18,7 @@ public class TC_LC_16_LoginSteps {
 
 
     @Given("Click on 'My Account' Dropmenu")
-    public void clickOnMyAccountDropmenu() {
+    public void clickOnMyAccountDropmenu()throws Exception {
         BasicDriver.getDriver().manage().deleteAllCookies();
         BasicDriver.getDriver().get("https://demo.opencart.com");
         BasicDriver.getDriver().manage().window().maximize();
