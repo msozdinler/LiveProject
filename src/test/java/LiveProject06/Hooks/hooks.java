@@ -13,7 +13,7 @@ public class hooks {
 
         @After // This method runs after every scenario
         public void afterScenario6() {
-            BasicDriver.quitDriver();
+
             System.out.println("Scenario has ended");
         }
     }
